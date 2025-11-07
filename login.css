@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1f2c31;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.login-container {
+  display: flex;
+  background-color: #2c3e42;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 85%;
+  max-width: 950px;
+  min-height: 520px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* --- LEFT: Image / Carousel --- */
+.login-image {
+  flex: 1;
+  background: #3b4c50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  position: relative;
+}
+
+.login-image img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* --- RIGHT: Form --- */
+.login-form {
+  flex: 1;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #2c3e42;
+}
+
+.login-form h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Forms */
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  outline: none;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: #fff;
+  color: #2c3e42;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #ccc;
+}
+.alt-btn {
+  background: #a0896f;
+  color: #fff;
+}
+.alt-btn:hover {
+  background: #8c765e;
+}
+
+/* --- CREATE ACCOUNT SECTION --- */
+.create-account {
+  margin-top: 35px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* adds even spacing between inputs */
+}
+
+.create-account h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.create-account input[type="text"],
+.create-account input[type="email"],
+.create-account input[type="password"] {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.checkbox-row input {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.create-account .button-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    width: 95%;
+    max-width: 500px;
+  }
+  .login-image {
+    display: none;
+  }
+  .login-form {
+    padding: 30px 25px;
+  }
+}

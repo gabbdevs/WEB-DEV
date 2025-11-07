@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | OTL™</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body class="login-page" data-page="login">
+  <div class="login-container">
+    <div class="login-image">
+      <div id="loginCarousel">
+        <img src="/WEB-DEV/img/MiniLogo.png" alt="Logo">
+      </div>
+    </div>
+
+    <div class="login-form">
+      <h1>Login</h1>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPass" placeholder="Password">
+        <div class="button-row">
+          <button type="submit">Log in</button>
+          <button type="button" class="alt-btn" id="btnSignup">Sign Up</button>
+        </div>
+        <button type="button" id="btnGuest">Continue as Guest</button>
+      </form>
+
+      <div class="create-account">
+        <h2>Create account</h2>
+        <input type="text" id="signupName" placeholder="Full name">
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPass" placeholder="Password">
+        <div class="checkbox-row">
+          <input type="checkbox" id="signupEligible">
+          <label for="signupEligible">Senior / PWD (20% discount)</label>
+        </div>
+        <div class="button-row">
+          <button id="btnCreate" class="alt-btn">Sign Up</button>
+          <button id="btnCancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="web.js"></script>
+</body>
+
+</html>
