@@ -10,41 +10,44 @@
 
 <body>
   <header class="navbar">
-        <div class="nav-left">
-            <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+    <div class="nav-left">
+      <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+    </div>
+
+    <nav class="nav-right">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
+        <a href="brand.html" class="nav-link active">BRAND</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </div>
+
+      <div class="nav-icons">
+        <!-- Search -->
+        <div class="icon search-container">
+          <img src="/img/search.png" alt="Search" id="searchIcon">
+          <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button type="submit" style="display: none;"></button>
+          </form>
         </div>
 
-        <nav class="nav-right">
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">HOME</a>
-                <a href="shop.html" class="nav-link">SHOP</a>
-                <a href="brand.html" class="nav-link active">BRAND</a>
-                <a href="contact.html" class="nav-link">CONTACT</a>
-            </div>
+        <!-- Profile -->
+        <div class="icon">
+          <a href="login.html" id="profileBtn">
+            <img src="/img/people.png" alt="Profile" id="profileIcon">
+          </a>
+        </div>
 
-            <div class="nav-icons">
-                <!-- Search -->
-                <div class="icon search-container">
-                    <img src="/img/search.png" alt="Search" id="searchIcon">
-                    <input type="text" id="searchInput" placeholder="Search..." />
-                </div>
-
-                <!-- Profile -->
-                <div class="icon">
-                    <a href="login.html" id="profileBtn">
-                        <img src="/img/people.png" alt="Profile" id="profileIcon">
-                    </a>
-                </div>
-
-                <!-- Cart -->
-                <div class="icon">
-                    <a href="cart.html" id="cartBtn">
-                        <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
+        <!-- Cart -->
+        <div class="icon">
+          <a href="cart.html" id="cartBtn">
+            <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <main class="page-layout">
     <section id="brandlogo">
@@ -112,7 +115,8 @@
     </div>
   </footer>
 
-  
+
 </body>
 <script src="web.js"></script>
+
 </html>
