@@ -4,30 +4,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Group 1 Project Design</title>
+  <title>OTL™</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <header class="navbar">
-        <div class="nav-left">
-            <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+    <div class="nav-left">
+      <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+    </div>
+
+    <nav class="nav-right">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
+        <a href="brand.html" class="nav-link">BRAND</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </div>
+
+      <div class="nav-icons">
+        <!-- Search -->
+        <div class="icon search-container"> 
+          <img src="/img/search.png" alt="Search" id="searchIcon">
+          <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button type="submit" style="display: none;"></button>
+          </form>
         </div>
 
-        <nav class="nav-right">
-            <a href="index.html">HOME</a>
-            <a href="shop.html">SHOP</a>
-            <a href="brand.html">BRAND</a>
-            <a href="contact.html">CONTACT</a>
-            <i class="icon"><img src="/img/search.png"></i>
-            <i class="icon">
-                <a href="login.html" id="profileBtn">
-                    <img src="/img/people.png" alt="Profile">
-                </a>
-            </i>
-            <i class="icon"><img src="/img/shopping-cart.png"></i>
-        </nav>
-    </header>
+
+        <!-- Profile -->
+        <div class="icon">
+          <a href="login.html" id="profileBtn">
+            <img src="/img/people.png" alt="Profile" id="profileIcon">
+          </a>
+        </div>
+
+        <!-- Cart -->
+        <div class="icon">
+          <a href="cart.html" id="cartBtn">
+            <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <main>
     <div class="products">
@@ -39,6 +60,7 @@
       </a>
     </div>
 
+    <!-- HOODIE -->
     <div class="shop-container">
       <div class="product">
         <img src="https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image18.png">
@@ -78,39 +100,81 @@
       </div>
 
       <div class="product">
-        <img src="/img/img/image3.jpg">
+        <img src="/img/image3.jpg">
         <p style="font-weight: bold;">Gray Own The Label Hoodie</p>
       </div>
 
       <div class="product">
         <img src="/img/image7.jpg">
-        <p style="font-weight: bold;">Pink Own The Label Hoodi</p>
+        <p style="font-weight: bold;">Pink Own The Label Hoodie</p>
+      </div>
+
+      <!-- TEES -->
+      <div class="product">
+        <img src="/img/image9.jpg">
+        <p style="font-weight: bold;">Black Own The Label Tee with Blossom Design</p>
+      </div>
+      <div class="product">
+        <img src="/img/image10.jpg">
+        <p style="font-weight: bold;">Gray Own The Label Tee with Blossom Design</p>
+      </div>
+      <div class="product">
+        <img src="/img/image11.jpg">
+        <p style="font-weight: bold;">Black Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image12.jpg">
+        <p style="font-weight: bold;">Red Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image13.jpg">
+        <p style="font-weight: bold;">Sky Blue Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image14.jpg">
+        <p style="font-weight: bold;">Brown Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image15.jpg">
+        <p style="font-weight: bold;">Pink Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image16.jpg">
+        <p style="font-weight: bold;">Lavender Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image17.jpg">
+        <p style="font-weight: bold;">Purple Own The Label Tee</p>
+      </div>
+      <div class="product">
+        <img src="/img/image18.jpg">
+        <p style="font-weight: bold;">Green Own The Label Tee</p>
       </div>
 
     </div>
     <footer>
-        <div class="footer-left">
-            <p>
-                <b>Celestino</b> V.J.&nbsp;&nbsp;&nbsp;
-                <b>Eudela</b> J.C.M.<br>
-                <b>Salvame</b> J.G.&nbsp;&nbsp;&nbsp;
-                <b>Solis</b> F.A.
-            </p>
+      <div class="footer-left">
+        <p>
+          <b>Celestino</b> V.J.&nbsp;&nbsp;&nbsp;
+          <b>Eudela</b> J.C.M.<br>
+          <b>Salvame</b> J.G.&nbsp;&nbsp;&nbsp;
+          <b>Solis</b> F.A.
+        </p>
 
-            </p>
-        </div>
+        </p>
+      </div>
 
-        <div class="footer-center">
-            <p>IT11S4<br>
-                2025 All rights Reserved.</p>
-        </div>
+      <div class="footer-center">
+        <p>IT11S4<br>
+          2025 All rights Reserved.</p>
+      </div>
 
-        <div class="footer-right">
-            <p>INTRODUCTION TO COMPUTING 1</p>
-        </div>
+      <div class="footer-right">
+        <p>INTRODUCTION TO COMPUTING 1</p>
+      </div>
     </footer>
 
-  
-</body>
 <script src="web.js"></script>
+</body>
+
 </html>
