@@ -492,6 +492,7 @@ h3 {
 .guide {
   text-align: justify;
   font-family: monospace;
+  font-size: large;
 }
 
 .size-link {
