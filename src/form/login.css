@@ -125,3 +125,9 @@ body {
     padding: 40px 25px;
   }
 }
+.error-message {
+  color: #f87171; /* red */
+  font-size: 0.85rem;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}

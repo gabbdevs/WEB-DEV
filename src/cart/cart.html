@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | OTL™</title>
+  <link rel="stylesheet" href="/src/styles.css">
+  <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+      </a>
+    </div>
+
+    <nav class="nav-right">
+      <div class="nav-links">
+        <a href="/src/index.html" class="nav-link">HOME</a>
+        <a href="/src/shop/shop.html" class="nav-link">SHOP</a>
+        <a href="/src/brand.html" class="nav-link">BRAND</a>
+        <a href="/src/contact.html" class="nav-link">CONTACT</a>
+        <a href="/src/about.html" class="nav-link">ABOUT</a>
+      </div>
+
+      <div class="nav-icons">
+        <div class="icon search-container">
+          <img src="/img/search.png" alt="Search" id="searchIcon">
+          <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button type="submit" style="display: none;"></button>
+          </form>
+        </div>
+
+        <div class="icon">
+          <a href="/src/form/login.html" id="profileBtn">
+            <img src="/img/people.png" alt="Profile" id="profileIcon">
+          </a>
+        </div>
+
+        <div class="icon active">
+          <a href="cart.html" id="cartBtn">
+            <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <h1>Your Cart</h1>
+  <div id="cartContainer"></div>
+  <p id="total"></p>
+  <button id="checkoutBtn">Proceed to Payment</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartContainer = document.getElementById("cartContainer");
+      const totalEl = document.getElementById("total");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function renderCart() {
+        cartContainer.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+          totalEl.textContent = "";
+          return;
+        }
+
+        cart.forEach((item, index) => {
+          let priceNumber = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+          total += priceNumber;
+
+          const div = document.createElement("div");
+          div.classList.add("cart-item");
+          div.innerHTML = `
+            <img src="${item.imgSrc}" alt="${item.name}">
+            <div class="item-info">
+              <p>${item.name}</p>
+              <p>${item.price}</p>
+            </div>
+            <button class="remove-btn" data-index="${index}">&times;</button>
+          `;
+          cartContainer.appendChild(div);
+        });
+
+        totalEl.textContent = "Total: ₱" + total.toFixed(2);
+
+        // Add remove button functionality
+        const removeButtons = document.querySelectorAll(".remove-btn");
+        removeButtons.forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-index");
+            cart.splice(idx, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+          });
+        });
+      }
+
+      renderCart();
+
+      checkoutBtn.addEventListener("click", () => {
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+        // Redirect to payment page
+        window.location.href = "payment.html";
+      });
+    });
+  </script>
+
+<script src="/src/web.js"></script>
+</body>
+     
+</html>

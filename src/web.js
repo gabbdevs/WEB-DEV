@@ -1,72 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => 
-{
+document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded");
 
-    // --- Profile button fade transition ---
+    // --- Products Data ---
+    window.PRODUCTS = [
+        { id: 'p1', name: 'Green Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image18.png' },
+        { id: 'p2', name: 'Maroon Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image15.png' },
+        { id: 'p3', name: 'Blue Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image19.png' },
+        { id: 'p4', name: 'Black Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/542902766_2253309531818884_8773528215017476616_n.jpg' },
+        { id: 'p5', name: 'Purple Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/541982967_1144605050860609_1695057319661234026_n.jpg' },
+        { id: 'p6', name: 'Brown Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image30.png' },
+        { id: 'p7', name: 'Dark Blue Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image23.png' },
+        { id: 'p8', name: 'Gray Own The Label Hoodie', price: 1499, img: '/img/image3.jpg' },
+        { id: 'p9', name: 'Pink Own The Label Hoodie', price: 1499, img: '/img/image7.jpg' },
+        { id: 'p10', name: 'Black Own The Label Tee with Blossom Design', price: 799, img: '/img/image9.jpg' },
+        { id: 'p11', name: 'Gray Own The Label Tee with Blossom Design', price: 799, img: '/img/image10.jpg' },
+        { id: 'p12', name: 'Black Own The Label Tee', price: 799, img: '/img/image11.jpg' },
+        { id: 'p13', name: 'Red Own The Label Tee', price: 799, img: '/img/image12.jpg' },
+        { id: 'p14', name: 'Sky Blue Own The Label Tee', price: 799, img: '/img/image13.jpg' },
+        { id: 'p15', name: 'Brown Own The Label Tee', price: 799, img: '/img/image14.jpg' },
+        { id: 'p16', name: 'Pink Own The Label Tee', price: 799, img: '/img/image15.jpg' },
+        { id: 'p17', name: 'Lavender Own The Label Tee', price: 799, img: '/img/image16.jpg' },
+        { id: 'p18', name: 'Purple Own The Label Tee', price: 799, img: '/img/image17.jpg' },
+        { id: 'p19', name: 'Green Own The Label Tee', price: 799, img: '/img/image18.jpg' }
+    ];
+
+    // --- Nav & Profile Fade ---
     const profileBtn = document.getElementById("profileBtn");
-    profileBtn?.addEventListener("click", e => 
-    {
+    profileBtn?.addEventListener("click", e => {
         e.preventDefault();
         document.body.classList.add("fade-out");
         setTimeout(() => window.location.href = "login.html", 500);
     });
 
-    // --- Fade transition for all navigation links ---
     const navLinks = document.querySelectorAll('.nav-link, .icon a');
-    navLinks.forEach(link => 
-    {
-        link.addEventListener('click', e => 
-        {
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
             e.preventDefault();
             document.body.classList.add('fade-out');
             setTimeout(() => window.location.href = link.href, 500);
         });
     });
 
-    // --- Highlight the active page ---
+    // --- Highlight Active Page ---
     const currentPage = window.location.pathname.split("/").pop();
-
-    // Nav-links
-    document.querySelectorAll(".nav-link").forEach(link => 
-    {
+    document.querySelectorAll(".nav-link").forEach(link => {
         const hrefPage = link.getAttribute("href");
-        if (hrefPage === currentPage ||
-            (hrefPage === "shop.html" && ["sizeChart.html", "order.html"].includes(currentPage))) {
-            link.classList.add("active");
-        } else 
-        {
-            link.classList.remove("active");
-        }
+        link.classList.toggle("active", hrefPage === currentPage);
     });
 
-    // Nav-icons
-    const iconPageMap = 
-    {
-        "login.html": "profileBtn",
-        "cart.html": "cartBtn"
-    };
-
-    Object.entries(iconPageMap).forEach(([page, id]) => 
-    {
-        const iconDiv = document.getElementById(id)?.parentElement;
-        if (!iconDiv) return;
-        if (currentPage === page) 
-        {
-            iconDiv.classList.add("active");
-        } else 
-        {
-            iconDiv.classList.remove("active");
-        }
-    });
-
-
-    // --- Footer visibility on scroll ---
-    window.addEventListener("scroll", () => 
-    {
+    // --- Footer Visibility ---
+    window.addEventListener("scroll", () => {
         const footer = document.querySelector("footer");
         const scrollPosition = window.scrollY + window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
-        footer.classList.toggle("visible", scrollPosition >= documentHeight - 50);
+        footer?.classList.toggle("visible", scrollPosition >= documentHeight - 50);
     });
 
     // --- Carousel ---
@@ -76,205 +63,34 @@ document.addEventListener("DOMContentLoaded", () =>
     let index = 0;
     const delay = 3000;
 
-    function showSlide(i) 
-    {
+    function showSlide(i) {
         index = (i + slides.length) % slides.length;
         if (track) track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, j) => dot.classList.toggle("active", j === index));
     }
 
-    let interval = setInterval(() => showSlide(index + 1), delay);
-
-    dots.forEach((dot, i) => 
-    {
-        dot.addEventListener("click", () => 
-        {
+    if (track && slides.length && dots.length) {
+        showSlide(index);
+        let interval = setInterval(() => showSlide(index + 1), delay);
+        dots.forEach((dot, i) => dot.addEventListener("click", () => {
             clearInterval(interval);
             showSlide(i);
             interval = setInterval(() => showSlide(index + 1), delay);
-        });
-    });
+        }));
+    }
 
-    showSlide(index);
-
-    // --- Shop search/filter function ---
-    const searchInput = document.getElementById("searchInput");
-    const searchForm = document.getElementById("searchForm");
-    const searchIcon = document.getElementById("searchIcon");
-
-    if (searchInput && searchForm) 
-    {
-        // On shop.html, find the container of products
-        const container = window.location.pathname.endsWith("shop.html")
-            ? document.querySelector(".shop-container")
-            : null;
-        const items = container ? container.querySelectorAll(":scope > *") : [];
-
-        // Create "No items found" message if on shop.html
-        let noItemsMsg;
-        if (container) 
-        {
-            noItemsMsg = document.createElement("p");
-            noItemsMsg.textContent = "No items found.";
-            noItemsMsg.style.color = "white";
-            noItemsMsg.style.fontWeight = "bold";
-            noItemsMsg.style.textAlign = "center";
-            noItemsMsg.style.marginTop = "20px";
-            noItemsMsg.style.display = "none";
-            container.parentNode?.insertBefore(noItemsMsg, container.nextSibling);
-        }
-
-        // --- Filter function (shop.html only) ---
-        function filterItems(query) 
-        {
-            if (!container) return;
-
-            const normalizedQuery = query.toLowerCase().trim();
-            const keywords = normalizedQuery.split(/\s+/);
-            let found = false;
-
-            items.forEach(item => {
-                const text = item.textContent.toLowerCase().trim();
-
-                // Show item if all keywords appear somewhere in text
-                const show = !normalizedQuery || keywords.every(k => text.includes(k));
-                item.style.display = show ? "" : "none";
-                if (show) found = true;
+    // --- Header Search Redirect (except shop page) ---
+    if (!currentPage.includes("shop.html")) {
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    const query = searchInput.value.trim();
+                    if (!query) return;
+                    window.location.href = `/src/shop/shop.html?search=${encodeURIComponent(query)}`;
+                }
             });
-
-            if (noItemsMsg) noItemsMsg.style.display = found ? "none" : "block";
-        }
-
-        // --- Handle search submit / click ---
-        function handleSearch(e) 
-        {
-            e.preventDefault();
-            const query = searchInput.value.toLowerCase().trim();
-            if (!query) return;
-
-            if (!window.location.pathname.endsWith("shop.html")) 
-            {
-                // Redirect from index.html or other pages to shop.html
-                document.body.classList.add("fade-out");
-                setTimeout(() => {
-                    window.location.href = `shop.html?q=${encodeURIComponent(query)}`;
-                }, 500);
-                return;
-            }
-
-            // On shop.html, filter items immediately
-            filterItems(query);
-        }
-
-        // --- Event listeners ---
-        searchInput.addEventListener("input", () => 
-        {
-            if (window.location.pathname.endsWith("shop.html")) {
-                filterItems(searchInput.value.toLowerCase());
-            }
-        });
-        searchForm.addEventListener("submit", handleSearch);
-        searchIcon?.addEventListener("click", handleSearch);
-
-        // --- Pre-fill search from URL query on shop.html ---
-        if (window.location.pathname.endsWith("shop.html")) 
-        {
-            const params = new URLSearchParams(window.location.search);
-            const q = params.get("q");
-            if (q) 
-            {
-                searchInput.value = q;
-                filterItems(q.toLowerCase());
-            }
         }
     }
-
-
-    // --- Cart/Login/Signup ---
-    const VAT = 0.12, DISCOUNT = 0.0;
-    const PRODUCTS = [
-        { 
-            id: 'p1', name: 'T-Shirt', price: 350 
-        },
-        { 
-            id: 'p2', name: 'Jeans', price: 1200 
-        },
-        { 
-            id: 'p3', name: 'Cap', price: 200 
-        },
-    ];
-
-    const getUsers = () => JSON.parse(localStorage.getItem('users') || '[]');
-    const saveUsers = u => localStorage.setItem('users', JSON.stringify(u));
-    const getCart = email => JSON.parse(localStorage.getItem('cart_' + email) || '[]');
-    const saveCart = (email, cart) => localStorage.setItem('cart_' + email, JSON.stringify(cart));
-
-    function signup(name, email, pass) 
-    {
-        const users = getUsers();
-        if (users.find(u => u.email === email)) return alert("Email already used");
-        users.push({ name, email, pass });
-        saveUsers(users);
-        alert("Signup successful");
-    }
-
-    function login(email, pass) 
-    {
-        const u = getUsers().find(x => x.email === email && x.pass === pass);
-        if (!u) return alert("Invalid email or password");
-        localStorage.setItem('current', u.email);
-        alert("Login success");
-    }
-
-    function addToCart(id) 
-    {
-        const email = localStorage.getItem('current');
-        if (!email) return alert("Login first");
-        const product = PRODUCTS.find(p => p.id === id);
-        let cart = getCart(email);
-        const existing = cart.find(c => c.id === id);
-        if (existing) existing.qty++; else cart.push({ ...product, qty: 1 });
-        saveCart(email, cart);
-        alert("Added to cart");
-    }
-
-    function removeFromCart(id) 
-    {
-        const email = localStorage.getItem('current');
-        if (!email) return alert("Login first");
-        saveCart(email, getCart(email).filter(i => i.id !== id));
-        alert("Item removed");
-    }
-
-    function computeTotal(cart) {
-        const sub = cart.reduce((s, i) => s + i.price * i.qty, 0);
-        const discount = sub * DISCOUNT;
-        const vat = (sub - discount) * VAT;
-        return { sub, discount, vat, total: sub - discount + vat };
-    }
-
-    function pay() 
-    {
-        const email = localStorage.getItem('current');
-        if (!email) return alert("Login first");
-        const cart = getCart(email);
-        if (cart.length === 0) return alert("Cart is empty");
-        const t = computeTotal(cart);
-        alert(`Payment success!\nTotal: ₱${t.total.toFixed(2)}`);
-        saveCart(email, []);
-    }
-
-    function exit() 
-    {
-        localStorage.removeItem('current');
-        alert("Logged out");
-    }
-
-    // --- Placeholder buttons ---
-    const btns = ['btnLogin', 'btnSignup', 'btnAdd', 'btnRemove', 'btnPay', 'btnExit'];
-    btns.forEach(id => 
-    {
-        const btn = document.getElementById(id);
-        if (btn) btn.onclick = () => alert(`${id} clicked (connect later)`);
-    });
 });

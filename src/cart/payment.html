@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | OTL™</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+
+<body class="payment-page">
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="/img/MiniLogo.png" alt="OTL Logo" class="otl-Minilogo">
+      </a>
+    </div>
+
+    <nav class="nav-right">
+      <div class="nav-links">
+        <a href="/src/index.html" class="nav-link">HOME</a>
+        <a href="/src/shop/shop.html" class="nav-link">SHOP</a>
+        <a href="/src/brand.html" class="nav-link">BRAND</a>
+        <a href="/src/contact.html" class="nav-link">CONTACT</a>
+        <a href="/src/about.html" class="nav-link">ABOUT</a>
+      </div>
+
+      <div class="nav-icons">
+        <div class="icon search-container">
+          <img src="/img/search.png" alt="Search" id="searchIcon">
+          <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button type="submit" style="display: none;"></button>
+          </form>
+        </div>
+
+        <div class="icon">
+          <a href="/src/form/login.html" id="profileBtn">
+            <img src="/img/people.png" alt="Profile" id="profileIcon">
+          </a>
+        </div>
+
+        <div class="icon active">
+          <a href="cart.html" id="cartBtn">
+            <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Payment Form -->
+  <div class="payment-container">
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+      <label>Full Name</label>
+      <input type="text" placeholder="Name" required>
+
+      <label>Email</label>
+      <input type="email" placeholder="name@gmail.com" required>
+
+      <label>Card Number</label>
+      <input type="text" placeholder="1234 5678 9012 3456" required maxlength="19">
+
+      <div class="payment-row">
+        <div>
+          <label>Expiry Date</label>
+          <input type="text" placeholder="MM/YY" required maxlength="5">
+        </div>
+        <div>
+          <label>CVV</label>
+          <input type="text" placeholder="123" required maxlength="4">
+        </div>
+      </div>
+
+      <label>Billing Address</label>
+      <input type="text" placeholder="123 Street, City, Country" required>
+
+      <button type="submit" id="payBtn">Pay Now</button>
+    </form>
+  </div>
+
+  <footer class="visible">
+    <div class="footer-left">
+      <p>© 2025 OTL™. All Rights Reserved.</p>
+    </div>
+    <div class="footer-center">
+      <p>Contact: support@otl.com</p>
+    </div>
+    <div class="footer-right">
+      <p>Follow Us: Instagram | Facebook </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Payment successful! Thank you for your purchase.");
+      localStorage.removeItem('cart');
+      window.location.href = '/src/index.html';
+    });
+  </script>
+
+  <script src="/src/web.js"></script>
+  <script src="/src/shop/shop.js"></script>
+</body>
+
+</html>
