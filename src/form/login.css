@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #0d0c0c, #343434, #575757);
+  color: white;
+  min-height: 100vh;
+}
+
+.login-wrapper {
+  display: flex;
+  width: 80%;
+  max-width: 900px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  margin: 150px auto 50px auto;
+}
+
+.login-left {
+  flex: 1;
+  background: linear-gradient(to bottom, #111, #333);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left .logo {
+  max-width: 70%;
+  border-radius: 10px;
+}
+
+.login-right {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.form {
+  display: none;
+  flex-direction: column;
+}
+
+.form.active {
+  display: flex;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  border-bottom: 2px solid #3b82f6;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.form input {
+  padding: 12px 15px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59,130,246,0.5);
+}
+
+.form button {
+  padding: 12px 0;
+  background: #3b82f6;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.form button:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+/* --- Toggle Text --- */
+.toggle-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.toggle-text span {
+  color: #3b82f6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle-text span:hover {
+  color: #60a5fa;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+    margin: 120px auto 30px auto;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 40px 25px;
+  }
+}

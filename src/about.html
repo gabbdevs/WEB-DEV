@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home | OTL™</title>
+    <title>About Us | OTL™</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -16,15 +16,14 @@
 
         <nav class="nav-right">
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">HOME</a>
+                <a href="index.html" class="nav-link">HOME</a>
                 <a href="shop.html" class="nav-link">SHOP</a>
                 <a href="brand.html" class="nav-link">BRAND</a>
                 <a href="contact.html" class="nav-link">CONTACT</a>
-                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="about.html" class="nav-link active">ABOUT</a>
             </div>
 
             <div class="nav-icons">
-                <!-- Search -->
                 <div class="icon search-container">
                     <img src="/img/search.png" alt="Search" id="searchIcon">
                     <form id="searchForm">
@@ -33,14 +32,12 @@
                     </form>
                 </div>
 
-                <!-- Profile -->
                 <div class="icon">
                     <a href="/src/form/login.html" id="profileBtn">
                         <img src="/img/people.png" alt="Profile" id="profileIcon">
                     </a>
                 </div>
 
-                <!-- Cart -->
                 <div class="icon">
                     <a href="cart.html" id="cartBtn">
                         <img src="/img/shopping-cart.png" alt="Cart" id="cartIcon">
@@ -50,29 +47,38 @@
         </nav>
     </header>
 
+    <main class="about-container">
+        <section class="about-intro">
+            <h1>Meet Our Team</h1>
+            <p>We are a group of passionate individuals dedicated to bringing you the best experience with OTL™. Get to know us below!</p>
+        </section>
 
-    <div class="carousel">
-        <div class="carousel-track">
-            <div class="slide"><img src="/img/LOGO.jpg" alt="OTL Logo"></div>
-            <div class="slide"><img src="/img/image1.jpg" alt="Product 1"></div>
-            <div class="slide"><img src="/img/image2.jpg" alt="Product 2"></div>
-            <div class="slide"><img src="/img/image3.jpg" alt="Product 3"></div>
-            <div class="slide"><img src="/img/image4.jpg" alt="Product 4"></div>
-            <div class="slide"><img src="/img/image5.jpg" alt="Product 5"></div>
-            <div class="slide"><img src="/img/image6.jpg" alt="Product 6"></div>
-        </div>
+        <section class="team-members">
+            <div class="member-card">
+                <img src="/img/jab.jpg" alt="Celestino V.J.">
+                <h2>Celestino V.J.</h2>
+                <p>Frontend & Backend Developer – Partner of Jireh in the majority development of the system.</p>
+            </div>
 
-        <div class="dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </div>
+            <div class="member-card">
+                <img src="/img/1x1EUDELA.jpg" alt="Eudela J.C.M.">
+                <h2>Eudela J.C.M.</h2>
+                <p>UI/UX Designer – In charge of crafting the initial website layout.</p>
+            </div>
 
+            <div class="member-card">
+                <img src="/img/Jireh.jpg" alt="Salvame J.G.">
+                <h2>Salvame J.G.</h2>
+                <p>Frontend & Backend Developer - In charge of organizing the website and develop the system.</p>
+            </div>
+
+            <div class="member-card">
+                <img src="/img/SOLIS.png" alt="Solis F.A.">
+                <h2>Solis F.A.</h2>
+                <p>UI/UX Designer - Helped Miguel to design the interface of the webpages.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-left">
@@ -81,8 +87,6 @@
                 <b>Eudela</b> J.C.M.<br>
                 <b>Salvame</b> J.G.&nbsp;&nbsp;&nbsp;
                 <b>Solis</b> F.A.
-            </p>
-
             </p>
         </div>
 
@@ -95,7 +99,8 @@
             <p>INTRODUCTION TO COMPUTING 1</p>
         </div>
     </footer>
+
+    <script src="web.js"></script>
 </body>
-<script src="web.js"></script>
 
 </html>

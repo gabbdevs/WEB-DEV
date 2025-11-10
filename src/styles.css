@@ -14,6 +14,7 @@ body {
 
 body.fade-out {
   opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 * {
@@ -42,6 +43,20 @@ body.fade-out {
   display: flex;
   align-items: center;
   gap: 25px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
 }
 
 .nav-links {
@@ -78,10 +93,17 @@ body.fade-out {
   height: auto;
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.3s ease;
+  filter: invert(100%);
 }
 
 .icon img:hover {
   transform: scale(1.1);
+  filter: invert(100%) brightness(1.2);
+}
+
+.icon.active img {
+  filter: invert(100%) brightness(1.2);
+  transform: scale(1);
 }
 
 .search-container {
@@ -343,6 +365,13 @@ footer.visible {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product .price {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 5px;
+}
+
 .product:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 12px black;
@@ -512,4 +541,59 @@ footer.visible {
   text-align: justify;
   font-family: monospace;
   font-size: large;
+}
+
+/* for about.html */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.about-intro p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 50px;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.member-card h2 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+}
+
+.member-card p {
+    font-size: 0.95rem;
+    color: #ddd;
 }

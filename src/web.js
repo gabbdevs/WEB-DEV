@@ -26,32 +26,39 @@ document.addEventListener("DOMContentLoaded", () =>
     // --- Highlight the active page ---
     const currentPage = window.location.pathname.split("/").pop();
 
-    // Define mapping: which page(s) correspond to which main nav link
-    const navMap = 
+    // Nav-links
+    document.querySelectorAll(".nav-link").forEach(link => 
     {
-        "index.html": "index.html",
-        "shop.html": "shop.html",
-        "sizeChart.html": "shop.html",
-        "order.html": "shop.html",
-        "brand.html": "brand.html",
-        "contact.html": "contact.html",
-        "login.html": "#profileIcon",
-        "cart.html": "#cartIcon"
+        const hrefPage = link.getAttribute("href");
+        if (hrefPage === currentPage ||
+            (hrefPage === "shop.html" && ["sizeChart.html", "order.html"].includes(currentPage))) {
+            link.classList.add("active");
+        } else 
+        {
+            link.classList.remove("active");
+        }
+    });
+
+    // Nav-icons
+    const iconPageMap = 
+    {
+        "login.html": "profileBtn",
+        "cart.html": "cartBtn"
     };
 
-    // Remove any existing active classes
-    document.querySelectorAll(".nav-link, .icon a").forEach(el => el.classList.remove("active"));
+    Object.entries(iconPageMap).forEach(([page, id]) => 
+    {
+        const iconDiv = document.getElementById(id)?.parentElement;
+        if (!iconDiv) return;
+        if (currentPage === page) 
+        {
+            iconDiv.classList.add("active");
+        } else 
+        {
+            iconDiv.classList.remove("active");
+        }
+    });
 
-    // Add active class based on mapping
-    if (navMap[currentPage]?.startsWith("#")) 
-    {
-        // Special icons (profile/cart)
-        document.querySelector(navMap[currentPage])?.parentElement?.parentElement?.classList.add("active");
-    } else 
-    {
-        // Normal nav links
-        document.querySelector(`a[href="${navMap[currentPage]}"]`)?.classList.add("active");
-    }
 
     // --- Footer visibility on scroll ---
     window.addEventListener("scroll", () => 
@@ -97,11 +104,13 @@ document.addEventListener("DOMContentLoaded", () =>
 
     if (searchInput && searchForm) 
     {
-        // find container of items automatically(for shop.html)
-        const container = searchInput.closest(".shop-container") || document.querySelector(".products, .items, .shop-container");
-        let items = container ? container.querySelectorAll(":scope > *") : [];
+        // On shop.html, find the container of products
+        const container = window.location.pathname.endsWith("shop.html")
+            ? document.querySelector(".shop-container")
+            : null;
+        const items = container ? container.querySelectorAll(":scope > *") : [];
 
-        // create "No items found" message if container does not exists
+        // Create "No items found" message if on shop.html
         let noItemsMsg;
         if (container) 
         {
@@ -115,19 +124,20 @@ document.addEventListener("DOMContentLoaded", () =>
             container.parentNode?.insertBefore(noItemsMsg, container.nextSibling);
         }
 
-        // filter function
+        // --- Filter function (shop.html only) ---
         function filterItems(query) 
         {
             if (!container) return;
+
+            const normalizedQuery = query.toLowerCase().trim();
+            const keywords = normalizedQuery.split(/\s+/);
             let found = false;
 
-            items.forEach(item => 
-            {
-                const text = item.textContent.toLowerCase();
-                let show = !query ||
-                    (query.includes("tee") && text.includes("tee")) ||
-                    (query.includes("hoodie") && text.includes("hoodie")) ||
-                    text.includes(query);
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase().trim();
+
+                // Show item if all keywords appear somewhere in text
+                const show = !normalizedQuery || keywords.every(k => text.includes(k));
                 item.style.display = show ? "" : "none";
                 if (show) found = true;
             });
@@ -135,40 +145,38 @@ document.addEventListener("DOMContentLoaded", () =>
             if (noItemsMsg) noItemsMsg.style.display = found ? "none" : "block";
         }
 
-        // handler for submit/click
+        // --- Handle search submit / click ---
         function handleSearch(e) 
         {
             e.preventDefault();
             const query = searchInput.value.toLowerCase().trim();
             if (!query) return;
 
-            // If not on shop.html, redirect
             if (!window.location.pathname.endsWith("shop.html")) 
             {
-                document.body.classList.add("fade-out"); // reuse existing fade-out CSS
-                setTimeout(() => 
-                {
+                // Redirect from index.html or other pages to shop.html
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
                     window.location.href = `shop.html?q=${encodeURIComponent(query)}`;
-                }, 500); // match your fade-out duration
+                }, 500);
                 return;
             }
 
-            // Filter immediately if on shop.html
+            // On shop.html, filter items immediately
             filterItems(query);
         }
 
         // --- Event listeners ---
         searchInput.addEventListener("input", () => 
         {
-            if (window.location.pathname.endsWith("shop.html")) 
-            {
+            if (window.location.pathname.endsWith("shop.html")) {
                 filterItems(searchInput.value.toLowerCase());
             }
         });
         searchForm.addEventListener("submit", handleSearch);
         searchIcon?.addEventListener("click", handleSearch);
 
-        // --- Pre-fill from URL query on shop.html ---
+        // --- Pre-fill search from URL query on shop.html ---
         if (window.location.pathname.endsWith("shop.html")) 
         {
             const params = new URLSearchParams(window.location.search);
