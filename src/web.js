@@ -15,16 +15,20 @@ document.addEventListener("DOMContentLoaded", () =>
         { id: 'p7', name: 'Dark Blue Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image23.png' },
         { id: 'p8', name: 'Gray Own The Label Hoodie', price: 1499, img: '/img/image3.jpg' },
         { id: 'p9', name: 'Pink Own The Label Hoodie', price: 1499, img: '/img/image7.jpg' },
-        { id: 'p10', name: 'Black Own The Label Tee with Blossom Design', price: 799, img: '/img/image9.jpg' },
-        { id: 'p11', name: 'Gray Own The Label Tee with Blossom Design', price: 799, img: '/img/image10.jpg' },
-        { id: 'p12', name: 'Black Own The Label Tee', price: 799, img: '/img/image11.jpg' },
-        { id: 'p13', name: 'Red Own The Label Tee', price: 799, img: '/img/image12.jpg' },
-        { id: 'p14', name: 'Sky Blue Own The Label Tee', price: 799, img: '/img/image13.jpg' },
-        { id: 'p15', name: 'Brown Own The Label Tee', price: 799, img: '/img/image14.jpg' },
-        { id: 'p16', name: 'Pink Own The Label Tee', price: 799, img: '/img/image15.jpg' },
-        { id: 'p17', name: 'Lavender Own The Label Tee', price: 799, img: '/img/image16.jpg' },
-        { id: 'p18', name: 'Purple Own The Label Tee', price: 799, img: '/img/image17.jpg' },
-        { id: 'p19', name: 'Green Own The Label Tee', price: 799, img: '/img/image18.jpg' }
+        { id: 'p10', name: "Blue Lightning Own The Label Hoodie", price: 1899, img: "/img/image19.jpg" },
+        { id: 'p11', name: "Oreo Own The Label Hoodie", price: 1899, img: "/img/image20.jpg" },
+        { id: 'p12', name: "Lavender Lightning Own The Label Hoodie", price: 1899, img: "/img/image21.jpg" },
+        { id: 'p13', name: "Oreo Lightning Own The Label Hoodie", price: 1899, img: "/img/image22.jpg" },
+        { id: 'p14', name: 'Black Own The Label Tee with Blossom Design', price: 799, img: '/img/image9.jpg' },
+        { id: 'p15', name: 'Gray Own The Label Tee with Blossom Design', price: 799, img: '/img/image10.jpg' },
+        { id: 'p16', name: 'Black Own The Label Tee', price: 799, img: '/img/image11.jpg' },
+        { id: 'p17', name: 'Red Own The Label Tee', price: 799, img: '/img/image12.jpg' },
+        { id: 'p18', name: 'Sky Blue Own The Label Tee', price: 799, img: '/img/image13.jpg' },
+        { id: 'p19', name: 'Brown Own The Label Tee', price: 799, img: '/img/image14.jpg' },
+        { id: 'p20', name: 'Pink Own The Label Tee', price: 799, img: '/img/image15.jpg' },
+        { id: 'p21', name: 'Lavender Own The Label Tee', price: 799, img: '/img/image16.jpg' },
+        { id: 'p22', name: 'Purple Own The Label Tee', price: 799, img: '/img/image17.jpg' },
+        { id: 'p23', name: 'Green Own The Label Tee', price: 799, img: '/img/image18.jpg' }
     ];
 
     // Profile Fade(button & redirect)
