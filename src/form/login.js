@@ -1,11 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => 
+{
     const loginForm = document.getElementById("loginForm");
     const signupForm = document.getElementById("signupForm");
     const showSignup = document.getElementById("showSignup");
     const showLogin = document.getElementById("showLogin");
 
-    // --- Helper Functions ---
-    const setError = (input, message) => {
+    // Helper Functions
+    const setError = (input, message) => 
+    {
         let errorEl = input.nextElementSibling;
         if (!errorEl || !errorEl.classList.contains("error-message")) {
             errorEl = document.createElement("div");
@@ -15,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         errorEl.innerText = message;
     };
 
-    const clearError = input => {
+    const clearError = input => 
+    {
         const errorEl = input.nextElementSibling;
         if (errorEl && errorEl.classList.contains("error-message")) {
             errorEl.remove();
@@ -27,21 +30,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const getUsers = () => JSON.parse(localStorage.getItem("users") || "[]");
     const saveUsers = users => localStorage.setItem("users", JSON.stringify(users));
 
-    // --- Toggle Forms ---
-    showSignup.addEventListener("click", () => {
+    // Toggle Forms 
+    showSignup.addEventListener("click", () => 
+    {
         loginForm.classList.remove("active");
         signupForm.classList.add("active");
         signupForm.querySelector("input").focus();
     });
 
-    showLogin.addEventListener("click", () => {
+    showLogin.addEventListener("click", () => 
+    {
         signupForm.classList.remove("active");
         loginForm.classList.add("active");
         loginForm.querySelector("input").focus();
     });
 
-    // --- Signup ---
-    signupForm.addEventListener("submit", e => {
+    // Signup 
+    signupForm.addEventListener("submit", e => 
+    {
         e.preventDefault();
 
         const name = document.getElementById("nameSignup");
@@ -51,15 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
         let valid = true;
         clearError(name); clearError(email); clearError(pass);
 
-        if (!name.value.trim()) {
+        if (!name.value.trim()) 
+        {
             setError(name, "Full Name is required");
             valid = false;
         }
-        if (!email.value.trim() || !validateEmail(email.value)) {
+        if (!email.value.trim() || !validateEmail(email.value)) 
+        {
             setError(email, "Valid email is required");
             valid = false;
         }
-        if (!pass.value.trim() || pass.value.length < 6) {
+        if (!pass.value.trim() || pass.value.length < 6) 
+        {
             setError(pass, "Password must be at least 6 characters");
             valid = false;
         }
@@ -68,7 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check if email already exists
         const users = getUsers();
-        if (users.some(u => u.email === email.value)) {
+        if (users.some(u => u.email === email.value)) 
+        {
             setError(email, "Email already registered");
             return;
         }
@@ -83,8 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.querySelector("input").focus();
     });
 
-    // --- Login ---
-    loginForm.addEventListener("submit", e => {
+    //  Login 
+    loginForm.addEventListener("submit", e => 
+    {
         e.preventDefault();
 
         const email = document.getElementById("emailLogin");
@@ -92,11 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         clearError(email); clearError(pass);
 
-        if (!email.value.trim() || !validateEmail(email.value)) {
+        if (!email.value.trim() || !validateEmail(email.value)) 
+        {
             setError(email, "Valid email is required");
             return;
         }
-        if (!pass.value.trim()) {
+        if (!pass.value.trim()) 
+        {
             setError(pass, "Password is required");
             return;
         }
@@ -104,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const users = getUsers();
         const user = users.find(u => u.email === email.value && u.password === pass.value);
 
-        if (!user) {
+        if (!user) 
+        {
             setError(pass, "Invalid email or password");
             return;
         }
@@ -113,9 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.reset();
     });
 
-    // --- Smooth navigation ---
-    document.querySelectorAll("a.nav-link, #profileBtn, #cartBtn").forEach(link => {
-        link.addEventListener("click", e => {
+    //  Smooth navigation 
+    document.querySelectorAll("a.nav-link, #profileBtn, #cartBtn").forEach(link => 
+    {
+        link.addEventListener("click", e => 
+        {
             e.preventDefault();
             const href = link.getAttribute("href");
             document.body.classList.add("fade-out");
@@ -123,12 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Highlight the active page ---
+    //  Highlight the active page 
     const currentPage = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll(".nav-link").forEach(link => {
+    document.querySelectorAll(".nav-link").forEach(link => 
+    {
         const hrefPage = link.getAttribute("href");
-        if (hrefPage === currentPage || (hrefPage === "shop.html" && ["sizeChart.html", "order.html"].includes(currentPage))) {
+        if (hrefPage === currentPage || (hrefPage === "shop.html" && ["sizeChart.html", "order.html"].includes(currentPage))) 
+        {
             link.classList.add("active");
         } else {
             link.classList.remove("active");
@@ -136,7 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const iconPageMap = { "login.html": "profileBtn", "cart.html": "cartBtn" };
-    Object.entries(iconPageMap).forEach(([page, id]) => {
+    Object.entries(iconPageMap).forEach(([page, id]) => 
+    {
         const iconDiv = document.getElementById(id)?.parentElement;
         if (!iconDiv) return;
         if (currentPage === page) iconDiv.classList.add("active");
