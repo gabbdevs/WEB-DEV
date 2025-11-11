@@ -1,7 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ensure that js file run only after that html files are loaded
+document.addEventListener("DOMContentLoaded", () => 
+{
+    // adds class "loaded" t the body tag when the page is ready
     document.body.classList.add("loaded");
 
-    // --- Products Data ---
+    // List of our Products
     window.PRODUCTS = [
         { id: 'p1', name: 'Green Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image18.png' },
         { id: 'p2', name: 'Maroon Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image15.png' },
@@ -24,67 +27,79 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'p19', name: 'Green Own The Label Tee', price: 799, img: '/img/image18.jpg' }
     ];
 
-    // --- Nav & Profile Fade ---
+    // Profile Fade(button & redirect)
     const profileBtn = document.getElementById("profileBtn");
-    profileBtn?.addEventListener("click", e => {
+    profileBtn?.addEventListener("click", e => 
+    {
         e.preventDefault();
         document.body.classList.add("fade-out");
         setTimeout(() => window.location.href = "login.html", 500);
     });
 
+    // Navs transition fade
     const navLinks = document.querySelectorAll('.nav-link, .icon a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', e => {
+    navLinks.forEach(link => 
+    {
+        link.addEventListener('click', e => 
+        {
             e.preventDefault();
             document.body.classList.add('fade-out');
             setTimeout(() => window.location.href = link.href, 500);
         });
     });
 
-    // --- Highlight Active Page ---
+    // Highlight Active Page
     const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll(".nav-link").forEach(link => {
+    document.querySelectorAll(".nav-link").forEach(link => 
+    {
         const hrefPage = link.getAttribute("href");
         link.classList.toggle("active", hrefPage === currentPage);
     });
 
-    // --- Footer Visibility ---
-    window.addEventListener("scroll", () => {
+    // Footer Visibility while scrolling
+    window.addEventListener("scroll", () => 
+    {
         const footer = document.querySelector("footer");
         const scrollPosition = window.scrollY + window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
         footer?.classList.toggle("visible", scrollPosition >= documentHeight - 50);
     });
 
-    // --- Carousel ---
+    // Image Carousel on homepage(index.html)
     const track = document.querySelector(".carousel-track");
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
     let index = 0;
     const delay = 3000;
 
-    function showSlide(i) {
+    function showSlide(i) 
+    {
         index = (i + slides.length) % slides.length;
         if (track) track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, j) => dot.classList.toggle("active", j === index));
     }
 
-    if (track && slides.length && dots.length) {
+    if (track && slides.length && dots.length) 
+    {
         showSlide(index);
         let interval = setInterval(() => showSlide(index + 1), delay);
-        dots.forEach((dot, i) => dot.addEventListener("click", () => {
+        dots.forEach((dot, i) => dot.addEventListener("click", () => 
+        {
             clearInterval(interval);
             showSlide(i);
             interval = setInterval(() => showSlide(index + 1), delay);
         }));
     }
 
-    // --- Header Search Redirect (except shop page) ---
-    if (!currentPage.includes("shop.html")) {
+    // Header Search Redirect (except shop page)
+    if (!currentPage.includes("shop.html")) 
+    {
         const searchInput = document.getElementById("searchInput");
         if (searchInput) {
-            searchInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
+            searchInput.addEventListener("keypress", (e) => 
+            {
+                if (e.key === "Enter")
+                {
                     e.preventDefault();
                     const query = searchInput.value.trim();
                     if (!query) return;

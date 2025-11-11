@@ -1,30 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ensure that js file run only after that html files are loaded
+document.addEventListener("DOMContentLoaded", () => 
+{
+    // connects js to html element id for our shopContainer and searchInput
     const shopContainer = document.getElementById("shopContainer");
     const searchInput = document.getElementById("searchInput");
 
-    if (!window.PRODUCTS) window.PRODUCTS = []; // fallback
+    if (!window.PRODUCTS) window.PRODUCTS = [];
 
-    // --- Render Products ---
-    function renderProducts(products) {
+    // Show Products
+    function renderProducts(products) 
+    {
         if (!shopContainer) return;
         shopContainer.innerHTML = "";
 
-        products.forEach(p => {
+        products.forEach(p => 
+        {
             const div = document.createElement("div");
             div.className = "product";
             div.innerHTML = `
                 <img src="${p.img}" alt="${p.name}">
                 <p class="product-name" style="font-weight: bold;">${p.name}</p>
                 <p class="price">₱${p.price}</p>
-                <button class="add-to-cart">+</button>
-            `;
+                <button class="add-to-cart">+</button>`;
             shopContainer.appendChild(div);
         });
     }
 
-    // --- Add-to-Cart (event delegation) ---
-    shopContainer.addEventListener("click", e => {
-        if (e.target.classList.contains("add-to-cart")) {
+    // Add-to-Cart
+    shopContainer.addEventListener("click", e => 
+    {
+        if (e.target.classList.contains("add-to-cart")) 
+        {
             const productDiv = e.target.closest(".product");
             const name = productDiv.querySelector(".product-name").innerText;
             const price = productDiv.querySelector(".price").innerText;
@@ -37,32 +43,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- Filter products on shop page ---
-    function filterProducts(query) {
+    // Filter products on shop page
+    function filterProducts(query) 
+    {
         return window.PRODUCTS.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
     }
 
-    // --- Check URL search param ---
+    // Check search queries
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get("search");
     let productsToRender = window.PRODUCTS;
 
-    if (searchQuery) {
+    if (searchQuery) 
+    {
         productsToRender = filterProducts(searchQuery);
         if (searchInput) searchInput.value = searchQuery;
     }
 
     renderProducts(productsToRender);
 
-    // --- Live search filter on shop page ---
+    // Live search filter on shop page
     if (searchInput) {
-        searchInput.addEventListener("input", () => {
+        searchInput.addEventListener("input", () => 
+        {
             const filtered = filterProducts(searchInput.value);
             renderProducts(filtered);
         });
 
-        searchInput.addEventListener("keypress", e => {
-            if (e.key === "Enter") e.preventDefault(); // live filtering, no redirect
+        searchInput.addEventListener("keypress", e => 
+        {
+            if (e.key === "Enter") e.preventDefault();
         });
     }
 });
