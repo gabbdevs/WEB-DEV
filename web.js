@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", () =>
 
     // List of our Products
     window.PRODUCTS = [
-        { id: 'p1', name: 'Green Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image18.png' },
-        { id: 'p2', name: 'Maroon Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image15.png' },
-        { id: 'p3', name: 'Blue Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image19.png' },
-        { id: 'p4', name: 'Black Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/542902766_2253309531818884_8773528215017476616_n.jpg' },
-        { id: 'p5', name: 'Purple Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/541982967_1144605050860609_1695057319661234026_n.jpg' },
-        { id: 'p6', name: 'Brown Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image30.png' },
-        { id: 'p7', name: 'Dark Blue Own The Label Hoodie', price: 1499, img: 'https://uploads.onecompiler.io/43rprn2p5/43xfe2uty/image23.png' },
+        { id: 'p1', name: 'Green Own The Label Hoodie', price: 1499, img: 'img/image25.jpg' },
+        { id: 'p2', name: 'Maroon Own The Label Hoodie', price: 1499, img: 'img/image24.jpg' },
+        { id: 'p3', name: 'Blue Own The Label Hoodie', price: 1499, img: 'img/image4.jpg' },
+        { id: 'p4', name: 'Black Own The Label Hoodie', price: 1499, img: 'img/image23.jpg' },
+        { id: 'p5', name: 'Purple Own The Label Hoodie', price: 1499, img: 'img/image2.jpg' },
+        { id: 'p6', name: 'Brown Own The Label Hoodie', price: 1499, img: 'img/image1.jpg' },
+        { id: 'p7', name: 'Dark Blue Own The Label Hoodie', price: 1499, img: 'img/image5.jpg' },
         { id: 'p8', name: 'Gray Own The Label Hoodie', price: 1499, img: '/img/image3.jpg' },
         { id: 'p9', name: 'Pink Own The Label Hoodie', price: 1499, img: '/img/image7.jpg' },
         { id: 'p10', name: "Blue Lightning Own The Label Hoodie", price: 1899, img: "/img/image19.jpg" },
