@@ -3,6 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   background: linear-gradient(to right, #0d0c0c, #343434, #575757);
+  min-height: 100vh;
   margin: 0;
   color: white;
   font-family: Arial, sans-serif;
@@ -28,22 +29,14 @@ body.fade-out {
   align-items: center;
   padding: 15px 40px;
   background: linear-gradient(to right, #111, #333);
-  background-repeat: no-repeat;
-  background-size: cover;
   color: white;
   position: sticky;
   top: 0;
-  overflow: auto;
   z-index: 1000;
-}
-
-::-webkit-scrollbar{
-  display: none;
 }
 
 .otl-Minilogo {
   height: 80px;
-  margin-right: 10vh;
 }
 
 .nav-right {
