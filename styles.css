@@ -676,3 +676,100 @@ footer.visible {
     font-weight: 500;
     margin-bottom: 15px;
 }
+
+/* ---------- SAFEGUARD: prevent horizontal overflow ---------- */
+/* This prevents any accidental element from forcing horizontal scroll.
+   It's safe because we still allow inner elements to wrap. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* hide accidental overflow */
+}
+
+/* Ensure all main containers are constrained to viewport width */
+#brandlogo, .page-layout, .shop-container, .carousel {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* ---------- PREVENT OVER-WIDE IMAGES / CONTAINERS ---------- */
+/* Use min/max width so big desktop images don't push mobile horizontally */
+.brand-image img {
+  width: min(90vw, 700px);   /* never wider than 90% of viewport on small screens */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ensure brand container centers and doesn't leak margin-left */
+#brandlogo {
+  width: min(95%, 1400px);
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* for making diff screen sizes responsive*/
+@media (max-width: 768px) {
+
+  /* Navbar adjustments */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0;
+  }
+
+  .nav-left img {
+    width: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+  }
+
+  .carousel {
+    height: auto;
+    padding: 0.5rem 0;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .carousel-indicators {
+    margin-top: 0.3rem;
+    transform: scale(0.9);
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  footer p,
+  footer span {
+    display: block;
+  }
+}
