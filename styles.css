@@ -853,3 +853,66 @@ footer.visible {
     height: 140px;
   }
 }
+
+@media (max-width: 600px) {
+
+  /* Navbar layout fix */
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5vh 2vw;
+    gap: 1vh;
+    text-align: center;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+    display: inline-block;
+    margin: 0.5vh 2vw;
+  }
+
+  .nav-right {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+  }
+
+  /* Carousel image scaling */
+  .carousel img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .carousel {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  /* Shop items fix */
+  .shop-container {
+    grid-template-columns: 1fr;
+    padding: 0 4vw;
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Adjust logo and spacing */
+  #brandlogo {
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* Text readability */
+  .brand-text h2, .brand-text p {
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+  }
+}
