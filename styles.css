@@ -858,8 +858,6 @@ footer.visible {
 }
 
 @media (max-width: 600px) {
-
-  /* Navbar layout fix */
   .navbar {
     flex-direction: column;
     justify-content: center;
@@ -881,7 +879,6 @@ footer.visible {
     gap: 5vw;
   }
 
-  /* Carousel image scaling */
   .carousel img {
     width: 100%;
     height: auto;
@@ -894,7 +891,6 @@ footer.visible {
     overflow: hidden;
   }
 
-  /* Shop items fix */
   .shop-container {
     grid-template-columns: 1fr;
     padding: 0 4vw;
@@ -905,14 +901,12 @@ footer.visible {
     height: auto;
   }
 
-  /* Adjust logo and spacing */
   #brandlogo {
     flex-direction: column;
     text-align: center;
     margin: 0 auto;
   }
 
-  /* Text readability */
   .brand-text h2, .brand-text p {
     text-align: center;
     width: 95%;
