@@ -2,7 +2,9 @@ html,
 body {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, #000000, #37658f, #0581a0);
+  background: linear-gradient(120deg, #0d0c0c, #343434, #575757);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
   background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
@@ -11,6 +13,20 @@ body {
   scroll-behavior: smooth;
   opacity: 1;
   transition: opacity 0.5s ease;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body.fade-out {
@@ -144,7 +160,7 @@ body.fade-out {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  margin-left: 6px;
+  margin-left: 0.5vh;
 }
 
 /* Show input smoothly */
@@ -673,8 +689,17 @@ footer.visible {
 
 /* media - for screen responsiveness */
 
-/* For Tablets and Small Laptops */
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Navbar responsiveness */
 @media (max-width: 1024px) {
+  .navbar {
+    padding: 1.5vh 3vw;
+  }
+
   .shop-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 2vw;
@@ -684,13 +709,8 @@ footer.visible {
     height: 30vh;
     object-fit: cover;
   }
-
-  .navbar {
-    padding: 1.5vh 3vw;
-  }
 }
 
-/* For Medium Devices */
 @media (max-width: 900px) {
   #brandlogo {
     flex-direction: column;
@@ -716,7 +736,6 @@ footer.visible {
   }
 }
 
-/* For Tablets & Large Phones */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -727,10 +746,13 @@ footer.visible {
 
   .nav-right {
     gap: 4vw;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .carousel {
     height: 50vh;
+    overflow: hidden;
   }
 
   .brand-image img {
@@ -749,71 +771,7 @@ footer.visible {
   .products p {
     width: 80%;
   }
-}
 
-/* For Small Phones */
-@media (max-width: 600px) {
-  .shop-container {
-    grid-template-columns: 1fr;
-    gap: 3vh;
-  }
-
-  .product img {
-    height: 35vh;
-  }
-
-  .brand-image img {
-    width: 90vw;
-  }
-
-  .brand-text {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
-  }
-}
-
-/* For Extra Small Screens */
-@media (max-width: 480px) {
-  .size-table {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
-  }
-
-  .products p {
-    width: 95%;
-  }
-
-  .navbar {
-    gap: 1.5vh;
-  }
-
-  .carousel {
-    height: 45vh;
-  }
-}
-
-/* Footer Responsiveness */
-@media (max-width: 760px) {
-  footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4vh 5vw;
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    width: 100%;
-    padding: 1.5vh 0;
-    text-align: center;
-  }
-
-  .footer-right {
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
   .about-container {
     padding: 6vh 4vw;
   }
@@ -838,22 +796,6 @@ footer.visible {
 
   .team-members {
     gap: 2.2rem;
-  }
-}
-
-/* Extra Small Devices (Phones) */
-@media (max-width: 480px) {
-  .about-intro p {
-    width: 95%;
-  }
-
-  .member-card {
-    padding: 5vh 5vw;
-  }
-
-  .member-card img {
-    width: 140px;
-    height: 140px;
   }
 }
 
@@ -911,5 +853,60 @@ footer.visible {
     text-align: center;
     width: 95%;
     margin: 0 auto;
+  }
+
+  .brand-text {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+  }
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+  .size-table {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+  }
+
+  .products p {
+    width: 95%;
+  }
+
+  .navbar {
+    gap: 1.5vh;
+  }
+
+  .carousel {
+    height: 45vh;
+  }
+
+  .about-intro p {
+    width: 95%;
+  }
+
+  .member-card {
+    padding: 5vh 5vw;
+  }
+
+  .member-card img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Footer Responsiveness */
+@media (max-width: 760px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4vh 5vw;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+    padding: 1.5vh 0;
+    text-align: center;
   }
 }
