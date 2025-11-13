@@ -1,11 +1,11 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: linear-gradient(to right, #000000, #37658f, #0581a0);
   color: #222;
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* stack header, content, footer */
+  flex-direction: column;
 }
 
 h1 {
@@ -367,4 +367,77 @@ body.payment-page {
 
 label {
   color: white;
+}
+
+.receipt-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: linear-gradient(to right, #000000, #37658f, #0581a0);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+  padding: 2vh;
+  align-items: center;
+}
+
+.receipt-container h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 2;
+}
+
+.receipt-container p {
+  line-height: 2;
+}
+
+.receipt-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+button {
+  background: #0581a0;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #036d89;
+}
+
+.btn {
+  display: inline-block;
+  background: #0581a0;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #036d89;
+  text-decoration: underline;
 }
