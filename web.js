@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () =>
                     e.preventDefault();
                     const query = searchInput.value.trim();
                     if (!query) return;
-                    window.location.href = `/src/shop/shop.html?search=${encodeURIComponent(query)}`;
+                    window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
                 }
             });
         }
