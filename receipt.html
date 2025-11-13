@@ -70,7 +70,6 @@
             <div class="total">Total: ₱<span id="total"></span></div>
         </div>
 
-        <!-- Back to Home as a proper link -->
         <a href="index.html" id="backHome" class="btn">Back to Home</a>
     </div>
 
@@ -87,7 +86,6 @@
     </footer>
 
     <script>
-        // Populate receipt data
         const receipt = JSON.parse(localStorage.getItem('latestReceipt'));
         const tbody = document.querySelector('#itemsTable tbody');
 
@@ -100,19 +98,21 @@
             document.getElementById('name').textContent = receipt.name;
             document.getElementById('email').textContent = receipt.email;
             document.getElementById('address').textContent = receipt.address;
-            document.getElementById('total').textContent = receipt.total;
+            document.getElementById('total').textContent = Number(receipt.total).toFixed(2);
 
             receipt.items.forEach(item => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${item.name}</td>
-                    <td>${item.quantity}</td>
-                    <td>₱${item.price.toFixed(2)}</td>
-                    <td>₱${(item.price * item.quantity).toFixed(2)}</td>`;
-                tbody.appendChild(tr);
-            });
+                    tr.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>₱${(item.price || 0).toFixed(2)}</td>
+                        <td>₱${((item.price || 0) * item.quantity).toFixed(2)}</td>`;
+                        tbody.appendChild(tr);
+                });
 
-            // Clear cart after showing receipt
+            document.getElementById('total').textContent = Number(receipt.total).toFixed(2);
+
+            // Clear the cart AFTER using the receipt
             localStorage.removeItem('cart');
         }
     </script>

@@ -14,21 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Convert prices and quantities to numbers
+        const sanitizedItems = cartItems.map(item => ({
+            name: item.name,
+            price: parseFloat(item.price) || 0,
+            quantity: parseInt(item.quantity) || 0
+        }));
+
+        // Calculate total
         const total = cartItems
-            .reduce((sum, item) => sum + item.price * item.quantity, 0)
+            .reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0)
             .toFixed(2);
+
 
         const receipt = {
             name,
             email,
             address,
             items: cartItems,
-            total,
+            total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2),
             date: new Date().toLocaleString(),
             receiptId: 'OTL-' + Math.floor(Math.random() * 1000000)
         };
 
         localStorage.setItem('latestReceipt', JSON.stringify(receipt));
+
         alert("Payment successful! Generating your receipt...");
         window.location.href = 'receipt.html';
     });
