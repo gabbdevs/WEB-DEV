@@ -219,7 +219,6 @@ body.fade-out {
 }
 
 footer {
-  position: static;
   width: 100%;
   background: linear-gradient(to right, #111, #333);
   color: white;
@@ -230,10 +229,10 @@ footer {
   font-family: Arial, sans-serif;
   font-size: clamp(0.9rem, 1vw, 1.2rem);
   z-index: 10;
+  margin-top: auto; /* ✅ ensures footer stays at bottom if content is short */
   opacity: 0;
-  margin: 0;
   transform: translateY(100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 footer.visible {
@@ -246,6 +245,9 @@ footer.visible {
 .footer-right {
   flex: 1;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
 }
 
 .footer-left p,
@@ -256,6 +258,7 @@ footer.visible {
 }
 
 .page-layout {
+  flex: 1; /* ensures content pushes footer down */
   display: flex;
   justify-content: center;
   align-items: flex-start;
