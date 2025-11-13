@@ -114,7 +114,7 @@ body.fade-out {
   position: relative;
   transition: width 0.3s ease;
   overflow: hidden;
-  width: 8vw;
+  width: 3.5vw;
   flex-direction: row-reverse;
   justify-content: flex-start;
 }
@@ -127,7 +127,7 @@ body.fade-out {
 /* Search icon */
 .search-container img {
   flex-shrink: 0;
-  margin-left: 2vw;
+  margin-left: 0.5vw;
 }
 
 /* Search input */
