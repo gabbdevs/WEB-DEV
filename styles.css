@@ -386,7 +386,7 @@ footer.visible {
   height: 2vw;
   font-size: 1.4rem;
   font-size: clamp(0.9rem, 1vw, 1.2rem);
-  background: black;
+  background: white;
   color: black;
   border: none;
   border-radius: 50%;
